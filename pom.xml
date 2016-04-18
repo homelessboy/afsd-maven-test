@@ -35,6 +35,11 @@
             </dependency>
             <dependency>
                 <groupId>me.afsd.test</groupId>
+                <artifactId>moduleB-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>me.afsd.test</groupId>
                 <artifactId>moduleC</artifactId>
                 <version>${project.version}</version>
             </dependency>

@@ -4,5 +4,6 @@
  * Time: 11:51
  */
 public class ADao {
-
+    private ADomain aDomain;
+    private CDomain cDomain;
 }

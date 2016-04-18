@@ -5,5 +5,4 @@
  */
 public class CDao {
     private CDomain cDomain;
-    private ADomain aDomain;
 }

@@ -17,10 +17,7 @@
             <groupId>me.afsd.test</groupId>
             <artifactId>moduleC-domain</artifactId>
         </dependency>
-        <dependency>
-            <groupId>me.afsd.test</groupId>
-            <artifactId>moduleA-domain</artifactId>
-        </dependency>
+
     </dependencies>
 
 </project>

@@ -11,5 +11,11 @@
 
     <artifactId>moduleA-dao</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>me.afsd.test</groupId>
+            <artifactId>moduleA-domain</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

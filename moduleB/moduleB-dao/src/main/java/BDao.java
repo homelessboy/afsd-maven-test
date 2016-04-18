@@ -4,4 +4,5 @@
  * Time: 11:51
  */
 public class BDao {
+    private BDomain bDomain;
 }
