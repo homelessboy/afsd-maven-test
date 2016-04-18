@@ -14,6 +14,12 @@
         <module>moduleC</module>
     </modules>
 
+    <scm>
+        <url>https://github.com/homelessboy/afsd-maven-test</url>
+        <connection>scm:git:git@github.com:homelessboy/afsd-maven-test.git</connection>
+        <developerConnection>scm:git:git@github.com:homelessboy/afsd-maven-test.git</developerConnection>
+    </scm>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -48,5 +54,18 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <!--<configuration>-->
+                    <!--<releaseProfiles>release</releaseProfiles>-->
+                <!--</configuration>-->
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
