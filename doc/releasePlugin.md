@@ -79,8 +79,28 @@ mvn release:clean release:prepare
 mvn release:perform
 ```
 
+#### Rollback a Release
+回滚，在release失败的时候，执行该命令进行回滚，
+回滚到执行perform之前的状态。
 
-#### Create a Branch
+
+#### Create a Branch 新建分支
+新建一个分支
+
+1. 检查当前是否有代码未提交
+2. 根据branch name修改POMs中的版本号
+3. 将scm的信息传输到新的pom文件中
+4. 提交修改后的poms文件
+5. 新建分支，使用当前的version name
+6. 修改poms中的版本号为xxx-SNAPSHOT
+7. 提交修改后的poms
 ```
 mvn release:branch -DbranchName=my-branch
 ```
+
+#### 总结
+使用release plugin,可以通过标准化的管理方式，管理代码版本，修改完成后，
+保证提交到仓库的版本正常，版本号正常迭代，release的版本在gitlab中，有release tag，
+
+在开发新功能时，应该规划好新的版本号，在新的版本的快照版本中进行分支，之前迭代中测试的版本，
+在原版本中进行修复，之后在新的分支中，拉取原分支中的代码。
