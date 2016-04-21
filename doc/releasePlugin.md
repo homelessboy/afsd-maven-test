@@ -78,3 +78,9 @@ mvn release:clean release:prepare
 ```
 mvn release:perform
 ```
+
+
+#### Create a Branch
+```
+mvn release:branch -DbranchName=my-branch
+```
