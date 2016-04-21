@@ -98,6 +98,44 @@ mvn release:perform
 mvn release:branch -DbranchName=my-branch
 ```
 
+#### 例子：
+```
+    <scm>
+        <url>http://192.168.2.231/yangdongfeng/simpletour-complex</url>
+        <connection>scm:git:git@192.168.2.231:yangdongfeng/simpletour-complex.git</connection>
+        <developerConnection>scm:git:git@192.168.2.231:yangdongfeng/simpletour-complex.git</developerConnection>   
+    </scm>
+    <!-- 确保使用ssh能够访问gitlab 使用'ssh -T git@192.168.2.231'进行测试-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <!-- 自动调整子模块版本号 -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <!-- 指定发布仓库-->
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>Internal Releases</name>
+            <url>http://192.168.2.231/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Internal Snapshots</name>
+            <url>http://192.168.2.231/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+    
+```
+
 #### 总结
 使用release plugin,可以通过标准化的管理方式，管理代码版本，修改完成后，
 保证提交到仓库的版本正常，版本号正常迭代，release的版本在gitlab中，有release tag，
