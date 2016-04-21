@@ -5,7 +5,7 @@
     <groupId>me.afsd.test</groupId>
     <artifactId>maven-test</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.1-alpha1</version>
+    <version>1.0-alpha3-SNAPSHOT</version>
     <modules>
         <module>moduleA</module>
         <module>moduleB</module>
@@ -16,8 +16,8 @@
         <url>https://github.com/homelessboy/afsd-maven-test</url>
         <connection>scm:git:git@github.com:homelessboy/afsd-maven-test.git</connection>
         <developerConnection>scm:git:git@github.com:homelessboy/afsd-maven-test.git</developerConnection>
-        <tag>1.0.1-alpha1</tag>
-    </scm>
+      <tag>1.0-alpha2</tag>
+  </scm>
 
     <dependencyManagement>
         <dependencies>
@@ -71,5 +71,19 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>Internal Releases</name>
+            <url>http://192.168.2.231/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Internal Snapshots</name>
+            <url>http://192.168.2.231/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
 
 </project>
