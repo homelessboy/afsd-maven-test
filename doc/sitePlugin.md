@@ -25,6 +25,13 @@ mvn clean site
 ```
 在target中生成静态html文件，可查看报告。
 
+### 指令 [概述](https://maven.apache.org/plugins/maven-site-plugin/index.html)
+site plugin有如下指令：
+
+* site:site ：用来为单一项目生成站点，注意：在多模块项目中，如果构建的目录结构不符合deployed site，
+构建site就无法访问有关联的模块。
+* site:deploy 用来构建支持Wagon协议的站点，通过<distributionManagerment>中的site地址。
+* 
 
 ### Project Report Plugins
 

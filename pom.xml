@@ -144,30 +144,87 @@
     <!-- 自动生成报告 -->
     <reporting>
         <plugins>
+            <!--聚合源代码-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>2.5</version>
+                <reportSets>
+                    <reportSet>
+                        <id>aggregate</id>
+                        <inherited>false</inherited>
+                        <reports>
+                            <report>aggregate</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+            <!-- 项目信息 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
                 <version>2.6</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>index</report>
+                            <report>dependencies</report>
+                            <report>project-team</report>
+                            <report>issue-tracking</report>
+                            <report>license</report>
+                            <report>scm</report>
+                            <report>cim</report>
+                            <report>modules</report>
+                            <report>plugins</report>
+                            <report>help</report>
+                            <report>summary</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+            <!-- 检查代码规范报告 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.15</version>
+                <configuration>
+                    <locale>zh_CN</locale>
+
+                    <!-- 使用maven社区代码风格 -->
+                    <configLocation>config/maven_checks.xml</configLocation>
+                </configuration>
                 <!--<reportSets>-->
                     <!--<reportSet>-->
+                        <!--<id>aggregate</id>-->
+                        <!--<inherited>false</inherited>-->
                         <!--<reports>-->
-                            <!--<report>index</report>-->
+                            <!--<report>aggregate</report>-->
                         <!--</reports>-->
                     <!--</reportSet>-->
                 <!--</reportSets>-->
             </plugin>
 
-            <!--&lt;!&ndash; 检查代码规范报告 &ndash;&gt;-->
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-checkstyle-plugin</artifactId>-->
-            <!--</plugin>-->
+            <plugin>
+                <!-- 代码隐藏bug检查 -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.6</version>
+                <configuration>
+                    <!-- 多模块聚合 -->
+                    <aggregate>true</aggregate>
+                </configuration>
+            </plugin>
 
             <!-- java doc报表-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.9.1</version>
+                <configuration>
+                    <locale>zh_CN</locale>
+                </configuration>
                 <reportSets>
                     <reportSet><!-- by default, id = "default" -->
                         <reports><!-- select non-aggregate reports -->
@@ -184,7 +241,6 @@
                     </reportSet>
                 </reportSets>
             </plugin>
-
 
         </plugins>
     </reporting>
