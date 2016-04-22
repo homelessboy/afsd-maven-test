@@ -6,7 +6,9 @@
         <version>1.3-alpha-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <name>
+        moduleB-domain
+    </name>
     <artifactId>moduleB-domain</artifactId>
 
     <dependencies>

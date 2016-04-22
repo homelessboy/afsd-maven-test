@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.afsd.test</groupId>
@@ -12,12 +13,45 @@
         <module>moduleC</module>
     </modules>
 
+
     <scm>
         <url>https://github.com/homelessboy/afsd-maven-test</url>
         <connection>scm:git:git@github.com:homelessboy/afsd-maven-test.git</connection>
         <developerConnection>scm:git:git@github.com:homelessboy/afsd-maven-test.git</developerConnection>
-    <tag>1.0-alpha2</tag>
+        <tag>1.0-alpha2</tag>
     </scm>
+
+    <organization>
+        <name>me.afsd</name>
+        <url>www.afsd.me</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <id>xuhui</id>
+            <name>XuHui</name>
+            <email>416422546@qq.com</email>
+            <organization>me.afsd</organization>
+            <roles>
+                <role>softwareengineer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <mailingLists>
+        <mailingList>
+            <name>xuhui</name>
+            <archive>archive</archive>
+            <subscribe>subscribe</subscribe>
+            <unsubscribe>unsubscribe</unsubscribe>
+        </mailingList>
+    </mailingLists>
+
+    <description>
+        测试maven相关插件，及功能
+    </description>
+
+    <url>www.afsd.me</url>
 
     <dependencyManagement>
         <dependencies>
@@ -61,6 +95,40 @@
 
     <build>
         <plugins>
+            <!-- 设置项目编译属性 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- resources插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- 构建项目站点报告插件-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.4</version>
+                <configuration>
+                    <locales>zh_CN</locales>
+                    <outputEncoding>UTF-8</outputEncoding>
+                </configuration>
+            </plugin>
+
+            <!-- release插件 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
@@ -72,7 +140,61 @@
         </plugins>
     </build>
 
+
+    <!-- 自动生成报告 -->
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.6</version>
+                <!--<reportSets>-->
+                    <!--<reportSet>-->
+                        <!--<reports>-->
+                            <!--<report>index</report>-->
+                        <!--</reports>-->
+                    <!--</reportSet>-->
+                <!--</reportSets>-->
+            </plugin>
+
+            <!--&lt;!&ndash; 检查代码规范报告 &ndash;&gt;-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-checkstyle-plugin</artifactId>-->
+            <!--</plugin>-->
+
+            <!-- java doc报表-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <reportSets>
+                    <reportSet><!-- by default, id = "default" -->
+                        <reports><!-- select non-aggregate reports -->
+                            <report>javadoc</report>
+                            <report>test-javadoc</report>
+                        </reports>
+                    </reportSet>
+                    <reportSet><!-- aggregate reportSet, to define in poms having modules -->
+                        <id>aggregate</id>
+                        <inherited>false</inherited><!-- don't run aggregate in child modules -->
+                        <reports>
+                            <report>aggregate</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+
+        </plugins>
+    </reporting>
+
     <distributionManagement>
+        <site>
+            <id>test</id>
+            <name>testname</name>
+            <url>file:///E:/test</url>
+        </site>
         <repository>
             <id>releases</id>
             <name>Internal Releases</name>
